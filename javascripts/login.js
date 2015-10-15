@@ -1,5 +1,6 @@
 define(["jquery","firebase"], function($, firebase){
-	console.log("on login")
+
+	//this whole function when run returns the name.email and will eventually return uid back to main
 	return{
 		regUser: function(name){
 			console.log(name.email, name.password)
