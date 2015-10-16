@@ -3,7 +3,7 @@ define(["jquery", "firebase"], function($, firebase){
 		updateuser: function(uid){
 			var userRef = new Firebase('https://moviehistory654.firebaseio.com/'+uid)
 			userRef.update({
-				frozen: "array of movie data"
+				frozen: "object of movie data"
 			})
 		}
 	}
