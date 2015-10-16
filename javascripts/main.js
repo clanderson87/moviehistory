@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser"], function($, Q, login, newuser){
+define(["jquery", "q", "login", "newUser", "setdata"], function($, Q, login, newuser, setdata){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -15,7 +15,8 @@ define(["jquery", "q", "login", "newUser"], function($, Q, login, newuser){
 			.then(function(authData){
 				uid = authData.uid;
 				$('#movies').show();
-			});
+			})
+
 
 	});
 
@@ -38,8 +39,8 @@ define(["jquery", "q", "login", "newUser"], function($, Q, login, newuser){
 			.then(function(authData){
 				uid= authData.uid;
 				console.log(uid);
-				sayName();
 				//this shows div only after the user has successfully logged in
+				setdata.addDatatoUser(uid);
 				$('#movies').show();
 			})
 			.done();
