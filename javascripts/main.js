@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata"], function($, Q, login, newuser, setdata){
+define(["jquery", "q", "login", "newUser", "setdata", "updatedata"], function($, Q, login, newuser, setdata, update){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -47,7 +47,10 @@ define(["jquery", "q", "login", "newUser", "setdata"], function($, Q, login, new
 		
 
 	});
-
+	$(document).on('click', '#towatch, #watched, #rating', function(){
+		update.updateuser(uid);
+		console.log("added to", uid);
+	})
 	//this function is a check to make sure uid is being redefined after going through authentication. 
 	function sayName(){
 		console.log(uid);
