@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata"], function($, Q, login, newuser, setdata, update, retrieve){
+define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb"], function($, Q, login, newuser, setdata, update, retrieve, omdb){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -49,7 +49,15 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		update.updateuser(uid);
 		retrieve.retreiveuserdata(uid);
 		console.log("added to", uid);
-	})
+	});
+
+	$(document).keypress(function(e) {
+    if(e.which == 13) {
+    	var title = $('#title').val();
+        alert('You pressed enter!');
+        omdb.getomdb(title);
+    }
+});
 	//this function is a check to make sure uid is being redefined after going through authentication. 
 	function sayName(){
 		console.log(uid);
