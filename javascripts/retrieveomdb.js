@@ -1,4 +1,4 @@
-define(["jquery"], function($){
+define(["jquery","hbs", "hbs!../templates/load-movies", ], function($,hbs, initmovies){
 	return {
 		getomdb: function(title){
 			$.ajax({
@@ -13,7 +13,8 @@ define(["jquery"], function($){
           		}
           		console.log(searchResults);
 
-          		$("#movies").html(templates.load-movies(searchResults));
+          		$("#movies").html(initmovies(searchResults.Search));
+          		$('#movies').show();
 
      //      			Poster: omdbdata.Poster,
 					// Title: omdbdata.Title,

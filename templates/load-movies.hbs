@@ -1,27 +1,36 @@
 <div class="row">
   <div class="col-md-4">
+    {{#each this}}
     <div class="thumbnail">
       <button type="button" class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
-      <img src="..." alt="...">
+      <img src="{{Poster}}" alt="">
       <div class="caption">
-        {{#each Title}}
-          <h3>{{this}}</h3>
-        {{/each}}
-        {{#each Type}}
-          <h4>{{this}}</h4>
-        {{/each}}
-        {{#each Year}}
-          <h4>{{this}}</h4>
-        {{/each}}
+        
+          <h3>{{Title}}</h3>
+        
+        
+          <h4>{{Year}}</h4>
+        
+        
+          <h4>{{Type}}</h4>
+        
         <div class="btn-group">
           <button type="button" class="btn btn-danger">ADD</button>
           <button type="button" class="btn btn-primary">WATCHED</button>
         </div>
       </div>
     </div>
+    {{/each}}
   </div>
+
+  <!--{search: [10]}
+        {
+          movie 1:{}
+          movie 2: {}
+        }
+
 
 
 
