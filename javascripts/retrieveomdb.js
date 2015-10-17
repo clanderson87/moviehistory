@@ -13,6 +13,8 @@ define(["jquery"], function($){
           		}
           		console.log(searchResults);
 
+          		$("#movies").html(templates.load-movies(searchResults));
+
      //      			Poster: omdbdata.Poster,
 					// Title: omdbdata.Title,
 					// Type: omdbdata.Type,
