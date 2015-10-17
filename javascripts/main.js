@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb"], function($, Q, login, newuser, setdata, update, retrieve, omdb){
+define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -14,7 +14,8 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		login.regUser(regisUser)
 			.then(function(authData){
 				uid = authData.uid;
-				$('#movies').show();
+				initsearch.initsearch();
+				// $('#movies').show();
 			})
 
 
@@ -39,7 +40,7 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 			.then(function(authData){
 				uid= authData.uid;
 				console.log(uid);
-				setdata.addDatatoUser(uid);
+				// setdata.addDatatoUser(uid);
 			})
 			.done();
 		
