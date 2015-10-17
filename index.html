@@ -29,56 +29,56 @@
         <li><button type="button" class="btn btn-default btn-lg"><a href="/index.html">
         <span class="glyphicon glyphicon-film" aria-hidden="true"></span></a>
       </button></li>
-        <form class="navbar-form navbar-left" role="search">
+        <div class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" class="form-control" placeholder="Search" id="title">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" id="searchOMDb">OMDb</button>
                   <button class="btn btn-default" type="button" id="searchMy">My Movies</button>
                 </span>
               </div>
             </div>
-          </form>
+          </div>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><button class ="btn navbar-btn login" data-toggle="modal" data-target="#loginRegister">login or register</button></li>
-        <!-- <li><a href="#" id="register">Register</a></li> -->
-
-        <!--testing login/register Modal content-->
-          <div id="loginRegister" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content to work with fixed navbar-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Login or Register</h4>
-                </div>
-                <div class="modal-body login">
-                  <p>email:
-                    <input id="email" type="email"/></p>
-                  <p>password:
-                    <input id="password" type="password"/></p>
-                  <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" id="login" class="btn btn-default" data-dismiss="modal">login</button>
-                    <button type="button" id="register" class="btn btn-default" data-dismiss="modal">register</button>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
+        <li><button class ="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginRegister">login or register</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+<!--Modal init-->
+<div id="loginRegister" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-<div class=".watched-group">
+  <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login or Register</h4>
+      </div>
+      <div class="modal-body login">
+        <p>email:
+          <input id="email" type="email"/>
+        </p>
+        <p>password:
+          <input id="password" type="password"/>
+        </p>
+        <div class="btn-group" role="group" aria-label="...">
+          <button type="button" id="login" class="btn btn-default" data-dismiss="modal">login</button>
+          <button type="button" id="register" class="btn btn-default" data-dismiss="modal">register</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="watched-group">
   <ul class="nav nav-pills">
     <li role="presentation" class="active"><a href="#" id="displayAll">All</a></li>
     <li role="presentation"><a href="#" id="displayWatched">Watched</a></li>
@@ -86,57 +86,7 @@
   </ul>
 </div>
 
-<div class="row">
-  <div class ="loadMovies"><!--Everything below will die when data is is loaded from HBS-->
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>MOVIE</h3>
-          <p>Movie Information</p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-danger">ADD</button>
-            <button type="button" class="btn btn-primary">WATCHED</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>MOVIE</h3>
-          <p>Movie Information</p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-danger">ADD</button>
-            <button type="button" class="btn btn-primary">WATCHED</button>
-          </div>
-        </div>
-      </div></div>
-    <div class="col-md-4">
-      <div class="thumbnail">
-      <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-        <img src="..." alt="...">
-        <div class="caption">
-          <h3>MOVIE</h3>
-          <p>Movie Information</p>
-          <div class="btn-group">
-            <button type="button" class="btn btn-danger">ADD</button>
-            <button type="button" class="btn btn-primary">WATCHED</button>
-          </div>
-        </div>
-      </div>
-    </div><!--this is where everything stops dying-->
-  </div>
-</div>
-
+<div id="movies"></div>
+<script data-main="javascripts/entry" src="../lib/bower_components/requirejs/require.js"></script>
 </body>
 </html>
