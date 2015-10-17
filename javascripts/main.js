@@ -54,7 +54,6 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 	$(document).keypress(function(e) {
     if(e.which == 13) {
     	var title = $('#title').val();
-        alert('You pressed enter!');
         omdb.getomdb(title);
     }
 });
