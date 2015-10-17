@@ -55,6 +55,8 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 	$(document).keypress(function(e) {
     if(e.which == 13) {
     	var title = $('#title').val();
+    	console.log(title);
+    	$("movies").hide();
         omdb.getomdb(title);
     }
 });
