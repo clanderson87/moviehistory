@@ -1,4 +1,4 @@
-define(["jquery","q","lodash","hbs", "hbs!../templates/load-movies", "retrievedata"], function($,Q,_,hbs, initmovies, retrievedata){
+define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrievedata"], function($,Q,_,hbs, searchmovies, retrievedata){
 	return {
 		getomdb: function(title){
 			$.ajax({
@@ -22,7 +22,7 @@ define(["jquery","q","lodash","hbs", "hbs!../templates/load-movies", "retrieveda
             //       }
 
             //     })
-              $("#movies").html(initmovies(searchResults.Search));
+              $("#movies").html(searchmovies(searchResults.Search));
               $('#movies').show();
 
         	});

@@ -13,17 +13,17 @@ define(["jquery", "firebase"], function($, firebase){
           		
           		switch(watchstatus){
           			case "towatch": 
-          				searchResults.towatch = 1;
+          				searchResults.towatch = true;
           				break;
           			case "watched":
-          				searchResults.towatch = 0;
+          				searchResults.towatch = false;
           				break;
           		}
 
           		var title = searchResults.Title;
           		var movieObject = searchResults;
           		var userRef = new Firebase('https://moviehistory654.firebaseio.com/'+uid);
-				userRef.update({title: movieObject });
+				      userRef.push(movieObject);
 
 			})
 		}

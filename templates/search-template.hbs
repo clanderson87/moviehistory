@@ -3,9 +3,9 @@
   <div class="col-md-4">
 
     <div class="thumbnail">
-      <button type="button" class="btn btn-default btn-lg">
+{{!--       <button type="button" class="btn btn-default btn-lg">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-      </button>
+      </button> --}}
       <img src="{{Poster}}" alt="">
       <div class="caption">
         
@@ -18,11 +18,8 @@
           <h4>{{Type}}</h4>
         
         <div class="btn-group">
-          {{#if towatch}}
-            <button type="button" class="watched" class="btn btn-primary" data-imdbid="{{imdbID}}"  data-watchstatus="watched">WATCHED</button>
-          {{else}}
-            <button type="button" class="towatch" class="btn btn-danger" data-imdbid="{{imdbID}}" data-watchstatus="towatch">ADD</button>
-          {{/if}}
+          <button type="button" class="watched" class="btn btn-primary" data-imdbid="{{imdbID}}" data-watchstatus="watched">WATCHED</button>
+          <button type="button" class="towatch" class="btn btn-danger" data-imdbid="{{imdbID}}" data-watchstatus="towatch">ADD</button>
         </div>
       </div>
     </div>
