@@ -46,14 +46,32 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		
 
 	});
+
+	//onclick feature to add movies to to watch feature
 	$(document).on('click', '#towatch', function(){
 		var imdbid = $('#watched').data("imdbid");
 		console.log(imdbid);
 		update.updateuser(uid, imdbid);
-		retrieve.retreiveuserdata(uid,imdbid);
-		console.log("added to", uid);
+		console.log("added to watch", uid);
 	});
 
+	//onclick feature to add movies to watched feature
+	$(document).on('click', '#watched', function(){
+		var imdbid = $('#watched').data("imdbid");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid);
+		console.log("added to watched", uid);
+	});
+
+	//onclick feature to add a rating to a movie
+	$(document).on('click', '#rating', function(){
+		var imdbid = $('#watched').data("imdbid");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid);
+		console.log("added a rating to", uid);
+	});
+
+	//on enter function to search omdb
 	$(document).keypress(function(e) {
     if(e.which == 13) {
     	var title = $('#title').val();
@@ -80,8 +98,5 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		$("#movies").hide();
 		displayall.retreiveuserdata(uid);
 	})
-	//this function is a check to make sure uid is being redefined after going through authentication. 
-	function sayName(){
-		console.log(uid);
-	}
+
 });
