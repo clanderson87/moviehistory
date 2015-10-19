@@ -73,13 +73,20 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		console.log("added a rating to", uid);
 	});
 
+	var omdbResults;
 	//on enter function to search omdb
 	$(document).keypress(function(e) {
     if(e.which == 13) {
     	var title = $('#title').val();
     	console.log(title);
     	$("movies").hide();
-        omdb.getomdb(title);
+        omdb.getomdb(title)
+        	.then(function(searchResults){
+        		omdbResults = searchResults;
+        		console.log(omdbResults)
+        		displayall.retreiveuserdata(uid, omdbResults);
+        	})
+        	.done();
     }
 	});
 

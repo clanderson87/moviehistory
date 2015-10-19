@@ -1,6 +1,7 @@
 define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrievedata"], function($,Q,_,hbs, searchmovies, retrievedata){
 	return {
 		getomdb: function(title){
+      var deferred = Q.defer();
 			$.ajax({
         		url: "http://www.omdbapi.com/?s="+title+"&y=&plot=short&r=json"
       		}).done(function(omdbdata) {
@@ -11,6 +12,14 @@ define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrie
           		for(var i=0; i<searchResults.Search.length; i++){
           			searchResults.Search[i].Poster = "http://img.omdbapi.com/?i=" + searchResults.Search[i].imdbID + "&apikey=8513e0a1";
           		}
+
+
+
+
+              deferred.resolve(searchResults.Search)
+
+
+
           		// console.log(searchResults);
             //   retrievedata.retreiveuserdata()
             //     .then(function(allMovies){
@@ -22,10 +31,11 @@ define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrie
             //       }
 
             //     })
-              $("#movies").html(searchmovies(searchResults.Search));
-              $('#movies').show();
+
 
         	});
+          return deferred.promise;
 		}
+
 	}
 });
