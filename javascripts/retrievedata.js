@@ -1,7 +1,7 @@
-define(["jquery", "hbs", "firebase", "hbs!../templates/load-movies"], function($, hbs, firebase, initmovies){
+define(["jquery","q", "hbs", "firebase", "hbs!../templates/load-movies"], function($,Q, hbs, firebase, initmovies){
 	return{
 		retreiveuserdata: function(uid){
-			console.log("running retrieve")
+			var deferred = Q.defer();
 			var myFirebaseRef = new Firebase("https://moviehistory654.firebaseio.com/"+uid);
 			myFirebaseRef.on("value", function(snapshot){
 			var movies = snapshot.val();
@@ -13,7 +13,10 @@ define(["jquery", "hbs", "firebase", "hbs!../templates/load-movies"], function($
 				movieWithId.key = key;
 				allMovies[allMovies.length] = movieWithId;
 			}
+			deferred.reject("error");
+			deferred.resolve(allMovies);
 
+			return deferred.promise;
 			// var watchedMovies =[];
 			// for (var i=0; i<allMovies.length; i++){
 			// 	if(allMovies[i].towatch == 1){
