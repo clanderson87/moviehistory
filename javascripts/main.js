@@ -48,26 +48,26 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 	});
 
 	//onclick feature to add movies to to watch feature
-	$(document).on('click', '#towatch', function(){
-		var imdbid = $('#watched').data("imdbid");
-		var watchstatus = $('#towatch').data("watchstatus");
+	$(document).on('click', '.towatch', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
 		console.log(imdbid);
 		update.updateuser(uid, imdbid, watchstatus);
 		console.log("added to watch", uid);
 	});
 
 	//onclick feature to add movies to watched feature
-	$(document).on('click', '#watched', function(){
-		var imdbid = $('#watched').data("imdbid");
-		var watchstatus = $('#watched').data("watchstatus");
-		console.log(imdbid);
+	$(document).on('click', '.watched', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
+		console.log();
 		update.updateuser(uid, imdbid, watchstatus);
 		console.log("added to watched", uid);
 	});
 
 	//onclick feature to add a rating to a movie
-	$(document).on('click', '#rating', function(){
-		var imdbid = $('#watched').data("imdbid");
+	$(document).on('click', '.rating', function(){
+		var imdbid = $(this).data("imdbid");
 		console.log(imdbid);
 		update.updateuser(uid, imdbid);
 		console.log("added a rating to", uid);
