@@ -16,11 +16,6 @@ define(["jquery","hbs", "hbs!../templates/load-movies"], function($,hbs, initmov
           		$("#movies").html(initmovies(searchResults.Search));
           		$('#movies').show();
 
-     //      			Poster: omdbdata.Poster,
-					// Title: omdbdata.Title,
-					// Type: omdbdata.Type,
-					// Year: omdbdata.Year,
-					// imdbID: omdbdata.imdbID
         	});
 		}
 	}

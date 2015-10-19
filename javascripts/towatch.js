@@ -1,11 +1,9 @@
 define(["jquery", "hbs", "firebase", "hbs!../templates/load-movies"], function($, hbs, firebase, initmovies){
 	return{
 		retreiveuserdata: function(uid){
-			console.log("running retrieve")
 			var myFirebaseRef = new Firebase("https://moviehistory654.firebaseio.com/"+uid);
 			myFirebaseRef.on("value", function(snapshot){
 			var movies = snapshot.val();
-			console.log(movies);
 
 			var allMovies = [];
 			for(var key in movies){
@@ -14,16 +12,16 @@ define(["jquery", "hbs", "firebase", "hbs!../templates/load-movies"], function($
 				allMovies[allMovies.length] = movieWithId;
 			}
 
-			// var watchedMovies =[];
-			// for (var i=0; i<allMovies.length; i++){
-			// 	if(allMovies[i].towatch == 1){
-			// 		watchedMovies.push(allMovies[i]);
-			// 	}
-			// }
-			// console.log(watchedMovies)
+			var towatchMovies =[];
+			for (var i=0; i<allMovies.length; i++){
+				if(allMovies[i].towatch == 1){
+					towatchMovies.push(allMovies[i]);
+				}
+			}
+			console.log(towatchMovies)
 
-			// $("#movies").html(initmovies(allMovies));
-   //        	$('#movies').show();
+			$("#movies").html(initmovies(towatchMovies));
+          	$('#movies').show();
 		// var uniqSongs = _.uniq(allSongs, 'title');
 		// var uniqAlbums = _.chain(allSongs).uniq('album').value();
 		// var uniqArtists = _.chain(allSongs).uniq('artist').pluck('artist').value();

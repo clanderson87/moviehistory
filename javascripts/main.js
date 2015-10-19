@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch){
+define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -40,15 +40,17 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 			.then(function(authData){
 				uid= authData.uid;
 				console.log(uid);
-				// setdata.addDatatoUser(uid);
+				setdata.addDatatoUser(uid);
 			})
 			.done();
 		
 
 	});
-	$(document).on('click', '#towatch, #watched, #rating', function(){
-		update.updateuser(uid);
-		retrieve.retreiveuserdata(uid);
+	$(document).on('click', '#towatch', function(){
+		var imdbid = $('#watched').data("imdbid");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid);
+		retrieve.retreiveuserdata(uid,imdbid);
 		console.log("added to", uid);
 	});
 
@@ -59,7 +61,25 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
     	$("movies").hide();
         omdb.getomdb(title);
     }
-});
+	});
+
+	//onclick to see to watch movies
+	$(document).on('click', '#displayToWatch', function(){
+		$("#movies").hide();
+		towatch.retreiveuserdata(uid);
+	})
+
+	//onclick to see watched movies
+	$(document).on('click', '#displayWatched', function(){
+		$("#movies").hide();
+		watched.retreiveuserdata(uid);
+	})
+
+	//onclick to see all movies
+	$(document).on('click', '#displayAll', function(){
+		$("#movies").hide();
+		displayall.retreiveuserdata(uid);
+	})
 	//this function is a check to make sure uid is being redefined after going through authentication. 
 	function sayName(){
 		console.log(uid);
