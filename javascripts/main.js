@@ -50,16 +50,18 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 	//onclick feature to add movies to to watch feature
 	$(document).on('click', '#towatch', function(){
 		var imdbid = $('#watched').data("imdbid");
+		var watchstatus = $('#towatch').data("watchstatus");
 		console.log(imdbid);
-		update.updateuser(uid, imdbid);
+		update.updateuser(uid, imdbid, watchstatus);
 		console.log("added to watch", uid);
 	});
 
 	//onclick feature to add movies to watched feature
 	$(document).on('click', '#watched', function(){
 		var imdbid = $('#watched').data("imdbid");
+		var watchstatus = $('#watched').data("watchstatus");
 		console.log(imdbid);
-		update.updateuser(uid, imdbid);
+		update.updateuser(uid, imdbid, watchstatus);
 		console.log("added to watched", uid);
 	});
 
