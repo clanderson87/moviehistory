@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall){
+define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll"], function($, firebase,  Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -106,6 +106,11 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 	$(document).on('click', '#displayAll', function(){
 		$("#movies").hide();
 		displayall.retreiveuserdata(uid);
+	})
+
+	$(document).on('click', '.removeButton', function(){
+		console.log("clicked remove")
+		$(this).parent().hide();
 	})
 
 });
