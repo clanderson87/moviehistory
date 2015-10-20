@@ -15,6 +15,7 @@ define(["jquery","hbs", "hbs!../templates/load-movies"], function($,hbs, initmov
 
               $("#movies").html(initmovies(searchResults.Search));
               $('#movies').show();
+              $(".StarRate").rating({min:0, max:5, step:1, size:'md'});
 
      //           Poster: omdbdata.Poster,
           // Title: omdbdata.Title,

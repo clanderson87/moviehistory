@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch){
+define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "bootstrap-star-rating"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch, bootStar){
 
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -64,3 +64,5 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		console.log(uid);
 	}
 });
+
+

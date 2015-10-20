@@ -18,16 +18,16 @@
 
 
         {{!-- Css Stars --}}
-        <fieldset class="{{this}} rating">
+        {{!-- <fieldset class="{{this}} rating">
           <legend>Rating:</legend>
           <input type="radio" id="1star" name="rating" value="1" /><label for="star1" title="Attack of the Clones">1 star</label>
           <input type="radio" id="2star" name="rating" value="2" /><label for="star2" title="The Phantom Menace">2 stars</label>
           <input type="radio" id="3star" name="rating" value="3" /><label for="star3" title="Revenge of the Sith">3 stars</label>
           <input type="radio" id="4star" name="rating" value="4" /><label for="star4" title="Return of the Jedi">4 stars</label>
           <input type="radio" id="5star" name="rating" value="5" /><label for="star5" title="Empire. F***ing Empire.">5 stars</label>
-        </fieldset>
-        {{!-- bootstrap initializer for ratings if we ever get that working:
-         <input id="input-id" type="number" class="rating" min=0 max=5 step=1 data-size="lg" data-rtl="true"> --}}
+        </fieldset> --}}
+        {{!-- bootstrap initializer for ratings if we ever get that working: --}}
+         <input type="number" class="StarRate" data-stars=5>
         <div class="btn-group">
           <button type="button" id="addToWatch" class="btn btn-danger">ADD</button>
           <button type="button" id="Watched" class="btn btn-primary">WATCHED</button>
