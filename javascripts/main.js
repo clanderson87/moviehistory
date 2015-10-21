@@ -122,6 +122,10 @@ define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", 
 	$('.StarRate').on('rating.change', function(event, value, caption) {
     alert("You rated: " + value + " = " + $(caption).text());
 });
+	$(document).on('change', '.StarRate', function(){
+		var ratingVal = $('.StarRate').val();
+		console.log(ratingVal);
+	})
 
 
 });

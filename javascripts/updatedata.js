@@ -22,6 +22,8 @@ define(["jquery", "firebase"], function($, firebase){
 
               searchResults.rating = 0;
 
+
+
               var title = searchResults.Title;
               var movieObject = searchResults;
               var rating = searchResults.rating;
