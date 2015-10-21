@@ -18,9 +18,11 @@ define(["jquery","firebase","q"], function($, firebase, Q){
         } else {
           console.log("Authenticated successfully with payload:", authData);
           deferred.resolve(authData);
+          // $('.login').hide();
         }
       });
       return deferred.promise;
     }
   };
 });
+

@@ -1,6 +1,7 @@
-define(["jquery","hbs", "hbs!../templates/load-movies"], function($,hbs, initmovies){
+define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrievedata"], function($,Q,_,hbs, searchmovies, retrievedata){
   return {
     getomdb: function(title){
+      var deferred = Q.defer();
       $.ajax({
             url: "http://www.omdbapi.com/?s="+title+"&y=&plot=short&r=json"
           }).done(function(omdbdata) {
@@ -11,18 +12,30 @@ define(["jquery","hbs", "hbs!../templates/load-movies"], function($,hbs, initmov
               for(var i=0; i<searchResults.Search.length; i++){
                 searchResults.Search[i].Poster = "http://img.omdbapi.com/?i=" + searchResults.Search[i].imdbID + "&apikey=8513e0a1";
               }
-              console.log(searchResults);
 
-              $("#movies").html(initmovies(searchResults.Search));
-              $('#movies').show();
-              $(".StarRate").rating({min:0, max:5, step:1, size:'md'});
 
-     //           Poster: omdbdata.Poster,
-          // Title: omdbdata.Title,
-          // Type: omdbdata.Type,
-          // Year: omdbdata.Year,
-          // imdbID: omdbdata.imdbID
+
+
+              deferred.resolve(searchResults.Search)
+
+
+
+              // console.log(searchResults);
+            //   retrievedata.retreiveuserdata()
+            //     .then(function(allMovies){
+            //       console.log("got past promise")
+            //       var match = _.filter(allMovies, _.matches({'title': title}))
+            //       if(title === match){
+            //         console.log("got here");
+
+            //       }
+
+            //     })
+
+
           });
+          return deferred.promise;
     }
+
   }
 });

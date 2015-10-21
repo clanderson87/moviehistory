@@ -1,11 +1,12 @@
 <div class="row">
-  {{#each this}}
+    {{#each this}}
   <div class="col-md-4">
+
     <div class="thumbnail">
-      <button type="button" class="btn btn-default btn-lg">
+      <button type="button" class="btn btn-default btn-lg removeButton">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
-      <img src="{{Poster}}" alt="">
+      <img src="{{Poster}}" alt="{{Title}}">
       <div class="caption">
 
           <h3>{{Title}}</h3>
@@ -18,9 +19,20 @@
 
 
          <input type="number" class="StarRate" data-stars=5>
-        <div class="btn-group">
+        {{!--// <script> $('.StarRate').on('rating.change', function(event, value, caption) {
+        //     alert("You rated: " {{this}} + value + " = " + $(caption).text());
+        // });
+        //   </script>--}}
+        {{!-- <div class="btn-group">
           <button type="button" id="addToWatch" class="btn btn-danger">ADD</button>
           <button type="button" id="Watched" class="btn btn-primary">WATCHED</button>
+        </div> --}}
+        <div class="btn-group">
+          {{#if towatch}}
+            <button type="button" class="watched" class="btn btn-primary" data-imdbid="{{imdbID}}"  data-watchstatus="watched">WATCHED</button>
+          {{else}}
+            <button type="button" class="towatch" class="btn btn-danger" data-imdbid="{{imdbID}}" data-watchstatus="towatch">ADD</button>
+          {{/if}}
         </div>
       </div>
     </div>

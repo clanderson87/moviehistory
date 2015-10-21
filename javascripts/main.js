@@ -1,4 +1,4 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "bootstrap-star-rating"], function($, Q, login, newuser, setdata, update, retrieve, omdb, initsearch, bootStar){
+define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll", "bootstrap-star-rating"], function($, firebase,  Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall, bootStar){
 
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
@@ -17,6 +17,7 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 				initsearch.initsearch();
 				// $('#movies').show();
 			})
+
 
 	});
 
@@ -39,30 +40,88 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 			.then(function(authData){
 				uid= authData.uid;
 				console.log(uid);
-				// setdata.addDatatoUser(uid);
+				setdata.addDatatoUser(uid);
 			})
 			.done();
 
 
 	});
-	$(document).on('click', '#towatch, #watched, #rating', function(){
-		update.updateuser(uid);
-		retrieve.retreiveuserdata(uid);
-		console.log("added to", uid);
+
+	//onclick feature to add movies to to watch feature
+	$(document).on('click', '.towatch', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid, watchstatus);
+		console.log("added to watch", uid);
 	});
 
+	//onclick feature to add movies to watched feature
+	$(document).on('click', '.watched', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
+		console.log();
+		update.updateuser(uid, imdbid, watchstatus);
+		console.log("added to watched", uid);
+	});
+
+	//onclick feature to add a rating to a movie
+	$(document).on('click', '.rating', function(){
+		var imdbid = $(this).data("imdbid");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid);
+		console.log("added a rating to", uid);
+	});
+
+	var omdbResults;
+	//on enter function to search omdb
 	$(document).keypress(function(e) {
     if(e.which == 13) {
     	var title = $('#title').val();
     	console.log(title);
     	$("movies").hide();
-        omdb.getomdb(title);
+        omdb.getomdb(title)
+        	.then(function(searchResults){
+        		omdbResults = searchResults;
+        		console.log(omdbResults)
+        		displayall.retreiveuserdata(uid, omdbResults);
+        	})
+        	.done();
     }
-});
-	//this function is a check to make sure uid is being redefined after going through authentication.
-	function sayName(){
-		console.log(uid);
-	}
+	});
+
+	//onclick to see to watch movies
+	$(document).on('click', '#displayToWatch', function(){
+		$("#movies").hide();
+		towatch.retreiveuserdata(uid);
+	})
+
+	//onclick to see watched movies
+	$(document).on('click', '#displayWatched', function(){
+		$("#movies").hide();
+		watched.retreiveuserdata(uid);
+	})
+
+	//onclick to see 5 star movies
+	$(document).on('click', '#display5', function(){
+		$("#movies").hide();
+		display5.retreiveuserdata(uid);
+	})
+
+	//onclick to see all movies
+	$(document).on('click', '#displayAll', function(){
+		$("#movies").hide();
+		displayall.retreiveuserdata(uid);
+	})
+
+	$(document).on('click', '.removeButton', function(){
+		console.log("clicked remove")
+		$(this).parent().hide();
+	})
+
+	$('.StarRate').on('rating.change', function(event, value, caption) {
+    alert("You rated: " + value + " = " + $(caption).text());
 });
 
 
+});
