@@ -3,6 +3,7 @@
 <head>
   <title>A brief history of Movies</title>
   <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.css">
+<<<<<<< HEAD
   <link href="/lib/bower_components/bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="/styles/main.css">
 </head>
@@ -30,6 +31,39 @@
           <div class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <div class="input-group"></div>
+=======
+  <link href="../lib/bower_components/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+<!--         <li><button type="button" class="btn btn-default btn-lg"><a href="/index.html">
+        <span class="glyphicon glyphicon-film" aria-hidden="true"></span></a>
+      </button></li> -->
+      <input type="text" class="form-control" placeholder="Search" id="title">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <div class="input-group">
+
+              </div>
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5
             </div>
           </div>
         </li>
@@ -69,6 +103,7 @@
               </div>
             </div>
 
+<<<<<<< HEAD
   <div class="watched-group">
     <ul class="nav nav-pills">
       <li role="presentation" id="displayWatched"><a href="#">Watched</a></li>
@@ -79,6 +114,26 @@
 
   <div id="movies"></div>
   <script data-main="javascripts/entry" src="../lib/bower_components/requirejs/require.js"></script>
+=======
+
+
+<div class="btn-group" role="group" aria-label="...">
+ <button type="button" id="displayWatched" class="btn btn-default">Watched</button>
+ <button type="button" id="displayToWatch" class="btn btn-default">To Watch</button>
+ <button type="button" id="display5"class="btn btn-default">Five Star Rating</button>
+</div>
+
+<!-- <div class=".watched-group">
+  <ul class="nav nav-pills">
+    <li role="presentation"id="displayWatched">Watched</li>
+    <li role="presentation" id="displayToWatch">To Watch</li>
+    <li role="presentation" id="display5">Display 5 Star Rating</li>
+  </ul>
+</div> -->
+
+<div id="movies"></div>
+<script data-main="javascripts/entry" src="../lib/bower_components/requirejs/require.js"></script>
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5
 </body>
 </html>
 

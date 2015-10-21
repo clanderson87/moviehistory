@@ -1,11 +1,16 @@
 <div class="row">
     {{#each this}}
+<<<<<<< HEAD
   <div class="col-md-4">
+=======
+  <div class="col-md-3">
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5
 
     <div class="thumbnail">
       <button type="button" class="btn btn-default btn-lg removeButton">
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
+<<<<<<< HEAD
       <img src="{{Poster}}" alt="{{Title}}">
       <div class="caption">
 
@@ -27,6 +32,20 @@
           <button type="button" id="addToWatch" class="btn btn-danger">ADD</button>
           <button type="button" id="Watched" class="btn btn-primary">WATCHED</button>
         </div> --}}
+=======
+      <img src="{{Poster}}" alt="">
+      <div class="caption">
+        
+          <h4>{{Title}}</h4>
+        
+        
+          <h4>{{Year}}</h4>
+
+          <p>{{Actors}}</p>
+
+        <input type="number" class="StarRate" data-stars=5>
+        
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5
         <div class="btn-group">
           {{#if towatch}}
             <button type="button" class="watched" class="btn btn-primary" data-imdbid="{{imdbID}}"  data-watchstatus="watched">WATCHED</button>
@@ -36,6 +55,18 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
   {{/each}}
 </div>
+=======
+
+  </div>
+  {{/each}}
+
+</div>
+
+
+
+
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5

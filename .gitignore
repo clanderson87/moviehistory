@@ -2,3 +2,7 @@
 /lib/bower_components
 /lib/node_modules
 /lib/.sass-cache
+<<<<<<< HEAD
+=======
+/lib/npm-debug.log
+>>>>>>> c92c7649c8c15e9f8aeb4e771fddba321ed261b5
