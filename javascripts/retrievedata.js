@@ -15,6 +15,7 @@ define(["jquery","q", "hbs", "firebase", "hbs!../templates/load-movies"], functi
 			// deferred.reject("error");
 			// deferred.resolve(allMovies);
 
+			
 
 			// var watchedMovies =[];
 			// for (var i=0; i<allMovies.length; i++){

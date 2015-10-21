@@ -11,7 +11,10 @@ define(["jquery","q","lodash","hbs", "hbs!../templates/search-template", "retrie
           		console.log(searchResults.Search.length);
           		for(var i=0; i<searchResults.Search.length; i++){
           			searchResults.Search[i].Poster = "http://img.omdbapi.com/?i=" + searchResults.Search[i].imdbID + "&apikey=8513e0a1";
-          		}
+          		  searchResults.Search[i].Actors = "http://img.omdbapi.com/?i=" + searchResults.Search[i].Actors + "&apikey=8513e0a1";
+                searchResults.Search[i].rating = 0;
+                searchResults.Search[i].towatch = "";
+              }
 
 
 

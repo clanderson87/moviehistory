@@ -1,6 +1,6 @@
 <div class="row">
     {{#each this}}
-  <div class="col-md-4">
+  <div class="col-md-3">
 
     <div class="thumbnail">
 {{!--       <button type="button" class="btn btn-default btn-lg">
@@ -9,14 +9,14 @@
       <img src="{{Poster}}" alt="">
       <div class="caption">
         
-          <h3>{{Title}}</h3>
+          <h4>{{Title}}</h4>
         
         
           <h4>{{Year}}</h4>
+
+          <p>{{Actors}}</p>
         
-        
-          <h4>{{Type}}</h4>
-        
+        <input type="number" class="StarRate" data-stars=5>
         <div class="btn-group">
           <button type="button" class="watched" class="btn btn-primary" data-imdbid="{{imdbID}}" data-watchstatus="watched">WATCHED</button>
           <button type="button" class="towatch" class="btn btn-danger" data-imdbid="{{imdbID}}" data-watchstatus="towatch">ADD</button>

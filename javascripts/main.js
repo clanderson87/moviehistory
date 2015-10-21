@@ -1,8 +1,9 @@
-define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll"], function($, firebase,  Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall){
+define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll", "bootstrap-star-rating"], function($, firebase,  Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall, bootstar){
 	
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
-
+	var title;
+	var omdbResults;
 	//log a already registered user into the system this process will authenticate and return the user id
 	$(document).on('click', '#login', function(){
 		console.log("logging in!");
@@ -14,7 +15,11 @@ define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", 
 		login.regUser(regisUser)
 			.then(function(authData){
 				uid = authData.uid;
-				initsearch.initsearch();
+				omdbResults = [];
+				title = "";
+				displayall.retreiveuserdata(uid, omdbResults, title);
+				// displayall.retreiveuserdata(uid, omdbResults, title);
+				// initsearch.initsearch();
 				// $('#movies').show();
 			})
 
@@ -73,18 +78,18 @@ define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", 
 		console.log("added a rating to", uid);
 	});
 
-	var omdbResults;
+	
 	//on enter function to search omdb
 	$(document).keypress(function(e) {
     if(e.which == 13) {
-    	var title = $('#title').val();
+    	title = $('#title').val();
     	console.log(title);
     	$("movies").hide();
         omdb.getomdb(title)
         	.then(function(searchResults){
         		omdbResults = searchResults;
         		console.log(omdbResults)
-        		displayall.retreiveuserdata(uid, omdbResults);
+        		displayall.retreiveuserdata(uid, omdbResults, title);
         	})
         	.done();
     }
@@ -112,5 +117,24 @@ define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", 
 		console.log("clicked remove")
 		$(this).parent().hide();
 	})
+
+
+	$(document).on('click', '#displayWatched', function() {
+     $(this).addClass("active");
+     $('#displayToWatch').removeClass("active");
+     $('#display5').removeClass("active");
+ });
+
+ $(document).on('click', '#displayToWatch', function() {
+     $(this).addClass("active");
+     $('#displayWatched').removeClass("active");
+     $('#display5').removeClass("active");
+ });
+ 
+ $(document).on('click', '#display5', function() {
+     $(this).addClass("active");
+     $('#displayToWatch').removeClass("active");
+     $('#display5').removeClass("active");
+ });
 
 });

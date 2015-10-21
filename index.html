@@ -3,14 +3,13 @@
 <head>
   <title>A brief history of Movies</title>
   <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="/styles/main.css">
-  <!--comment these CDNs out are replace with bower-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="../lib/bower_components/bootstrap-star-rating/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -75,13 +74,20 @@
 </nav>
 
 
-<div class=".watched-group">
+
+<div class="btn-group" role="group" aria-label="...">
+ <button type="button" id="displayWatched" class="btn btn-default">Watched</button>
+ <button type="button" id="displayToWatch" class="btn btn-default">To Watch</button>
+ <button type="button" id="display5"class="btn btn-default">Five Star Rating</button>
+</div>
+
+<!-- <div class=".watched-group">
   <ul class="nav nav-pills">
     <li role="presentation"id="displayWatched">Watched</li>
     <li role="presentation" id="displayToWatch">To Watch</li>
     <li role="presentation" id="display5">Display 5 Star Rating</li>
   </ul>
-</div>
+</div> -->
 
 <div id="movies"></div>
 <script data-main="javascripts/entry" src="../lib/bower_components/requirejs/require.js"></script>

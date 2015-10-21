@@ -20,6 +20,8 @@ define(["jquery", "firebase"], function($, firebase){
           				break;
           		}
 
+              searchResults.rating = 0;
+
           		var title = searchResults.Title;
           		var movieObject = searchResults;
           		var userRef = new Firebase('https://moviehistory654.firebaseio.com/'+uid);
