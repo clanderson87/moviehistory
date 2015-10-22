@@ -2,5 +2,12 @@ body {
    background-size: cover;
    background-repeat: no-repeat;
    background-position: 50% 50%;
-  background: url('http://theartmad.com/wp-content/uploads/2015/04/Movie-Reel-Wallpaper-5.jpg');
+    background: url('http://theartmad.com/wp-content/uploads/2015/04/Movie-Reel-Wallpaper-5.jpg (2MB)
+
+');
+};
+
+
+.glyphicon-remove {
+    color: red;
 };
