@@ -1,8 +1,9 @@
-define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb"], function($, Q, login, newuser, setdata, update, retrieve, omdb){
-	
+define(["jquery", "firebase", "q", "login", "newUser", "setdata", "updatedata", "retrievedata", "retrieveomdb", "initsearch", "towatch", "watched", "displayAll", "display5", "bootstrap-star-rating"], function($, firebase,  Q, login, newuser, setdata, update, retrieve, omdb, initsearch, towatch, watched, displayall, fivestar, bootstar){
+
 	//this variable will hold the user id. this will be the key to passing data and retrieving it.
 	var uid;
-
+	var title;
+	var omdbResults;
 	//log a already registered user into the system this process will authenticate and return the user id
 	$(document).on('click', '#login', function(){
 		console.log("logging in!");
@@ -14,7 +15,12 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 		login.regUser(regisUser)
 			.then(function(authData){
 				uid = authData.uid;
-				$('#movies').show();
+				omdbResults = [];
+				title = "";
+				displayall.retreiveuserdata(uid, omdbResults, title);
+				// displayall.retreiveuserdata(uid, omdbResults, title);
+				// initsearch.initsearch();
+				// $('#movies').show();
 			})
 
 
@@ -42,23 +48,98 @@ define(["jquery", "q", "login", "newUser", "setdata", "updatedata", "retrievedat
 				setdata.addDatatoUser(uid);
 			})
 			.done();
-		
+
 
 	});
-	$(document).on('click', '#towatch, #watched, #rating', function(){
-		update.updateuser(uid);
-		retrieve.retreiveuserdata(uid);
-		console.log("added to", uid);
+
+	//onclick feature to add movies to to watch feature
+	$(document).on('click', '.towatch', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid, watchstatus);
+		console.log("added to watch", uid);
 	});
 
+	//onclick feature to add movies to watched feature
+	$(document).on('click', '.watched', function(){
+		var imdbid = $(this).data("imdbid");
+		var watchstatus = $(this).data("watchstatus");
+		console.log();
+		update.updateuser(uid, imdbid, watchstatus);
+		console.log("added to watched", uid);
+	});
+
+	//onclick feature to add a rating to a movie
+	$(document).on('click', '.rating', function(){
+		var imdbid = $(this).data("imdbid");
+		console.log(imdbid);
+		update.updateuser(uid, imdbid);
+		console.log("added a rating to", uid);
+	});
+
+
+	//on enter function to search omdb
 	$(document).keypress(function(e) {
     if(e.which == 13) {
-    	var title = $('#title').val();
-        omdb.getomdb(title);
+    	title = $('#title').val();
+    	console.log(title);
+    	$("movies").hide();
+        omdb.getomdb(title)
+        	.then(function(searchResults){
+        		omdbResults = searchResults;
+        		console.log(omdbResults)
+        		displayall.retreiveuserdata(uid, omdbResults, title);
+        	})
+        	.done();
     }
-});
-	//this function is a check to make sure uid is being redefined after going through authentication. 
-	function sayName(){
-		console.log(uid);
-	}
+	});
+
+	//onclick to see to watch movies
+	$(document).on('click', '#displayToWatch', function(){
+		$("#movies").hide();
+		towatch.retreiveuserdata(uid);
+	})
+
+	//onclick to see watched movies
+	$(document).on('click', '#displayWatched', function(){
+		$("#movies").hide();
+		watched.retreiveuserdata(uid);
+	})
+
+	$(document).on('click', '#display5', function(){
+		$("#movies").hide();
+		fivestar.retreiveuserdata(uid);
+	})
+
+	//onclick to see all movies
+	$(document).on('click', '#displayAll', function(){
+		$("#movies").hide();
+		displayall.retreiveuserdata(uid);
+	})
+
+	$(document).on('click', '.removeButton', function(){
+		console.log("clicked remove")
+		$(this).parent().hide();
+	})
+
+
+	$(document).on('click', '#displayWatched', function() {
+     $(this).addClass("active");
+     $('#displayToWatch').removeClass("active");
+     $('#display5').removeClass("active");
+ });
+
+ $(document).on('click', '#displayToWatch', function() {
+     $(this).addClass("active");
+     $('#displayWatched').removeClass("active");
+     $('#display5').removeClass("active");
+ });
+
+ $(document).on('click', '#display5', function() {
+     $(this).addClass("active");
+     $('#displayToWatch').removeClass("active");
+     $('#display5').removeClass("active");
+ });
+
 });

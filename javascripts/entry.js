@@ -6,13 +6,15 @@ requirejs.config({
 		"hbs": "../lib/bower_components/require-handlebars-plugin/hbs",
 		"lodash": "../lib/bower_components/lodash/lodash",
 		"q": "../lib/bower_components/q/q",
-		"bootstrap": "../lib/bower_components/bootstrap/dist/js/bootstrap"
+		"bootstrap": "../lib/bower_components/bootstrap/dist/js/bootstrap",
+		"bootstrap-star-rating": "../lib/bower_components/bootstrap-star-rating/js/star-rating.min"
 	},
 	shim:{
 		"bootstrap":["jquery"],
 		'firebase':{
 			exports:'Firebase'
-		}
+		},
+		"bootstrap-star-rating":["bootstrap"]
 	}
 });
 
